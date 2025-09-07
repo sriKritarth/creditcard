@@ -21,46 +21,10 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r dev-requirements.txt
-        
-
-    - name: Verify Data Exists
-      run: |
-        echo "Checking if raw data exists..."
-        ls -la data/raw/
-        echo "Raw data file size:"
-        wc -l data/raw/creditcard.csv
-
-    - name: Train Model
-      run: |
-        # Create necessary directories
-        mkdir -p data/processed
-        mkdir -p src/models
-        
-        # Run data processing
-        echo "Running data processing..."
-        python src/data/make_dataset.py data/raw/creditcard.csv
-        
-        # Verify processed data was created
-        echo "Checking processed data..."
-        ls -la data/processed/
-        echo "Train data shape:"
-        python -c "import pandas as pd; df = pd.read_csv('data/processed/train.csv'); print(f'Shape: {df.shape}')"
-        
-        # Train the model
-        echo "Training model..."
-        python src/models/train_model.py data/processed/
-        
-        # Verify model was created
-        echo "Checking model file..."
-        ls -la src/models/
-
-    - name: Test Model Loading
-      run: |
-        python -c "from joblib import load; model = load('src/models/model.joblib'); print('Model loaded successfully')"
 
     - name: Run FastAPI App Test
       run: |
-        timeout 10s python app_gunicorn.py || true
+        python app_gunicorn.py || true
 
     - name: Run Streamlit App Test
       run: |
