@@ -30,8 +30,8 @@ def main():
     params = yaml.safe_load(open(params_file))["train_model"]
 
     input_file = sys.argv[1]
-    data_path = home_dir.as_posix() + input_file
-    output_path = home_dir.as_posix() + "/models"
+    data_path = home_dir.as_posix() + "/" + input_file
+    output_path = home_dir.as_posix() + "/src/models"
     pathlib.Path(output_path).mkdir(parents=True, exist_ok=True)
 
     TARGET = "Class"

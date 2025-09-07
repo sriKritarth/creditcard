@@ -13,3 +13,4 @@ sagemaker
 ipykernel
 boto3
 streamlit
+PyYAML
