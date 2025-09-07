@@ -5,7 +5,7 @@ import yaml
 import pandas as pd
 from sklearn import metrics
 from sklearn import tree
-from dvclive import Live
+import mlflow
 from matplotlib import pyplot as plt
 
 
@@ -102,7 +102,7 @@ def main():
     y_test = test_features[TARGET]
 
     # Evaluate train and test datasets.
-    with Live(output_path, dvcyaml=False) as live:
+    with mlflow(output_path, dvcyaml=False) as live:
         evaluate(model, X_train, y_train, "train", live, output_path)
         evaluate(model, X_test, y_test, "test", live, output_path)
 

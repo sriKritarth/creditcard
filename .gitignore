@@ -91,3 +91,7 @@ target/
 
 # AWS files
 .aws/*
+
+
+data/raw/
+data/processed
