@@ -36,7 +36,17 @@ jobs:
 
     ## Only CML specefic code
 
+    - name: Setup CML
+      uses: iterative/setup-cml@v2
+
     - name: Create CML report
       env:
         REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+          echo "## CI report" > report.md
+          echo "" >> report.md
+          echo "- Python: $(python --version)" >> report.md
+          echo "- Tests: passed ✅" >> report.md
+          # add metrics/artifacts here if you generate them
+          cml comment create report.md
     
