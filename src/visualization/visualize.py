@@ -1,12 +1,12 @@
 import pathlib
-import joblib
 import sys
-import yaml
-import pandas as pd
-from sklearn import metrics
-from sklearn import tree
+
+import joblib
 import mlflow
+import pandas as pd
+import yaml
 from matplotlib import pyplot as plt
+from sklearn import metrics, tree
 
 
 def evaluate(model, X, y, split, live, save_path):
@@ -67,7 +67,9 @@ def save_importance_plot(live, model, feature_names):
     axes.set_ylabel("Mean decrease in impurity")
 
     importances = model.feature_importances_
-    forest_importances = pd.Series(importances, index=feature_names).nlargest(n=10)
+    forest_importances = pd.Series(importances, index=feature_names).nlargest(
+        n=10
+    )
     forest_importances.plot.bar(ax=axes)
 
     live.log_image("importance.png", fig)
@@ -84,20 +86,20 @@ def main():
     model_file = sys.argv[1]
     # Load the model.
     model = joblib.load(model_file)
-    
+
     # Load the data.
     input_file = sys.argv[2]
     data_path = home_dir.as_posix() + input_file
-    output_path = home_dir.as_posix() + '/dvclive'
+    output_path = home_dir.as_posix() + "/dvclive"
     pathlib.Path(output_path).mkdir(parents=True, exist_ok=True)
-    
-    TARGET = 'Class'
-    train_features = pd.read_csv(data_path + '/train.csv')
+
+    TARGET = "Class"
+    train_features = pd.read_csv(data_path + "/train.csv")
     X_train = train_features.drop(TARGET, axis=1)
     y_train = train_features[TARGET]
     feature_names = X_train.columns.to_list()
 
-    test_features = pd.read_csv(data_path + '/test.csv')
+    test_features = pd.read_csv(data_path + "/test.csv")
     X_test = test_features.drop(TARGET, axis=1)
     y_test = test_features[TARGET]
 
@@ -108,6 +110,7 @@ def main():
 
         # Dump feature importance plot.
         save_importance_plot(live, model, feature_names)
+
 
 if __name__ == "__main__":
     main()

@@ -6,10 +6,12 @@ from joblib import load
 model_path = "src/models/model.joblib"
 model = load(model_path)
 
+
 def predict(features):
     # Make predictions using the loaded model
     prediction = model.predict_proba([features])
     return prediction
+
 
 def main():
     st.title("Machine Learning Model Prediction")
@@ -47,40 +49,40 @@ def main():
     Amount = st.slider("Amount", min_value=0.0, max_value=1000.0, value=5.0)
 
     if st.button("Predict"):
-        features = [Time,
-                V1,
-                V2,
-                V3,
-                V4,
-                V5,
-                V6,
-                V7,
-                V8,
-                V9,
-                V10,
-                V11,
-                V12,
-                V13,
-                V14,
-                V15,
-                V16,
-                V17,
-                V18,
-                V19,
-                V20,
-                V21,
-                V22,
-                V23,
-                V24,
-                V25,
-                V26,
-                V27,
-                V28,
-                Amount
-                ]
+        features = [
+            Time,
+            V1,
+            V2,
+            V3,
+            V4,
+            V5,
+            V6,
+            V7,
+            V8,
+            V9,
+            V10,
+            V11,
+            V12,
+            V13,
+            V14,
+            V15,
+            V16,
+            V17,
+            V18,
+            V19,
+            V20,
+            V21,
+            V22,
+            V23,
+            V24,
+            V25,
+            V26,
+            V27,
+            V28,
+            Amount,
+        ]
         result = predict(features)
         st.success(f"The prediction is: {result}")
-
 
 
 if __name__ == "__main__":

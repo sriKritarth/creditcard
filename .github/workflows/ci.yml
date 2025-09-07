@@ -32,11 +32,11 @@ jobs:
 
     - name: Format check with black
       run: |
-        black --check --diff .
+        black --check --diff . --exclude="docs/|ass1/|\.ipynb$"
 
     - name: Import sort check with isort
       run: |
-        isort --check-only --diff .
+        isort --check-only --diff . --skip-glob="docs/*" --skip-glob="ass1/*"
 
     - name: Train Model
       run: |

@@ -41,11 +41,11 @@ lint:
 
 ## Format code with black
 format:
-	black src app_gunicorn.py app_streamlit.py test_app.py
+	black src app_gunicorn.py app_streamlit.py test_app.py --exclude="docs/|ass1/|\.ipynb$"
 
 ## Sort imports with isort
 sort-imports:
-	isort src app_gunicorn.py app_streamlit.py test_app.py
+	isort src app_gunicorn.py app_streamlit.py test_app.py --skip-glob="docs/*" --skip-glob="ass1/*"
 
 ## Train model
 train: data
