@@ -93,5 +93,4 @@ target/
 .aws/*
 
 
-data/raw/
-data/processed
+data/
