@@ -1,6 +1,7 @@
 import mlflow
 import random
 import yaml
+import os
 
 with mlflow.start_run():
     epochs = yaml.safe_load(open('params.yaml'))["train_model"]["epochs"]
