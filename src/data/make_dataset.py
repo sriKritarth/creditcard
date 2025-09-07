@@ -29,8 +29,8 @@ def main():
     params = yaml.safe_load(open(params_file))["make_dataset"]
 
     input_file = sys.argv[1]
-    data_path = home_dir.as_posix() + input_file
-    output_path = home_dir.as_posix() + '/data/'
+    data_path = home_dir.as_posix() + '/' + input_file
+    output_path = home_dir.as_posix() + '/data/processed/'
     
     data = load_data(data_path)
     train_data, test_data = split_data(data, params['test_split'], params['seed'])

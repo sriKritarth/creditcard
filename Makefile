@@ -27,7 +27,7 @@ requirements: test_environment
 
 ## Make Dataset
 data: requirements
-	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw data/processed
+	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw/creditcard.csv
 
 ## Delete all compiled Python files
 clean:
@@ -37,6 +37,31 @@ clean:
 ## Lint using flake8
 lint:
 	flake8 src
+	flake8 app_gunicorn.py app_streamlit.py test_app.py
+
+## Format code with black
+format:
+	black src app_gunicorn.py app_streamlit.py test_app.py
+
+## Sort imports with isort
+sort-imports:
+	isort src app_gunicorn.py app_streamlit.py test_app.py
+
+## Train model
+train: data
+	$(PYTHON_INTERPRETER) src/models/train_model.py data/processed/
+
+## Run tests
+test: train
+	$(PYTHON_INTERPRETER) -m pytest test_app.py -v
+
+## Run FastAPI app
+run-api: train
+	$(PYTHON_INTERPRETER) app_gunicorn.py
+
+## Run Streamlit app
+run-streamlit: train
+	streamlit run app_streamlit.py
 
 ## Upload Data to S3
 sync_data_to_s3:

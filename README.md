@@ -3,10 +3,96 @@ array(['Time', 'V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9',
        'V19', 'V20', 'V21', 'V22', 'V23', 'V24', 'V25', 'V26', 'V27',
        'V28', 'Amount'], dtype=object)
 
-creditcard
-==============================
+# Credit Card Fraud Detection
 
-A credit card fraud detection project
+A machine learning project for detecting credit card fraud using Random Forest classifier.
+
+## Quick Start
+
+### Prerequisites
+- Python 3.11+
+- pip
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd creditcard
+```
+
+2. Install dependencies:
+```bash
+pip install -r dev-requirements.txt
+```
+
+3. Train the model:
+```bash
+make train
+```
+
+4. Run the applications:
+```bash
+# FastAPI app
+make run-api
+
+# Streamlit app
+make run-streamlit
+```
+
+### Available Commands
+
+- `make data` - Process the raw data
+- `make train` - Train the machine learning model
+- `make test` - Run tests
+- `make lint` - Run linting checks
+- `make format` - Format code with black
+- `make sort-imports` - Sort imports with isort
+- `make run-api` - Run FastAPI application
+- `make run-streamlit` - Run Streamlit application
+
+## API Usage
+
+The FastAPI application provides a REST API for fraud detection:
+
+- **GET** `/` - Health check endpoint
+- **POST** `/predict` - Predict fraud probability
+
+Example prediction request:
+```json
+{
+  "Time": 0.0,
+  "V1": -1.359807134,
+  "V2": -0.072781173,
+  "V3": 2.536346738,
+  "V4": 1.378155224,
+  "V5": -0.338261077,
+  "V6": 0.462387778,
+  "V7": 0.239598554,
+  "V8": 0.098697901,
+  "V9": 0.36378697,
+  "V10": 0.090794172,
+  "V11": -0.551599533,
+  "V12": -0.617800856,
+  "V13": -0.991389847,
+  "V14": -0.311169354,
+  "V15": 1.468176972,
+  "V16": -0.470400525,
+  "V17": 0.207971242,
+  "V18": 0.02579058,
+  "V19": 0.40399296,
+  "V20": 0.251412098,
+  "V21": -0.018306778,
+  "V22": 0.277837576,
+  "V23": -0.11047391,
+  "V24": 0.066928075,
+  "V25": 0.128539358,
+  "V26": -0.189114844,
+  "V27": 0.133558377,
+  "V28": -0.021053053,
+  "Amount": 149.62
+}
+```
 
 Project Organization
 ------------

@@ -3,7 +3,7 @@ import streamlit as st
 from joblib import load
 
 # Load the pre-trained RandomForest model
-model_path = "models/model.joblib"
+model_path = "src/models/model.joblib"
 model = load(model_path)
 
 def predict(features):

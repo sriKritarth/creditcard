@@ -40,7 +40,7 @@ class PredictionInput(BaseModel):
 
 
 # Load the pre-trained RandomForest model
-model_path = "E:\creditcard\src\models\model.joblib"
+model_path = "src/models/model.joblib"
 model = load(model_path)
 
 @app.get("/")
