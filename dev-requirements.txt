@@ -13,9 +13,3 @@ sagemaker
 ipykernel
 boto3
 streamlit
-
-# development tools
-flake8
-black
-isort
-pytest
