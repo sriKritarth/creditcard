@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/0/c2a4ba4f41d84636b2c3f220acdaee17/artifacts
+end_time: 1757346633591
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c2a4ba4f41d84636b2c3f220acdaee17
+run_name: unleashed-loon-111
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757346633080
+status: 3
+tags: []
+user_id: KRITARTH
