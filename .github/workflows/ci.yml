@@ -24,7 +24,7 @@ jobs:
 
     - name: Run FastAPI App Test
       run: |
-        python app_gunicorn.py || true
+        timeout 10s python app_gunicorn.py || true
 
     - name: Run Streamlit App Test
       run: |
